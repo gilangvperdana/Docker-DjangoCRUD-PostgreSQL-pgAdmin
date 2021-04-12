@@ -6,6 +6,7 @@ docker-compose run web python manage.py migrate
 docker-compose up -d
 
 pgAdmin4:
+
 username : admin@gmail.com
 
 password : admin
