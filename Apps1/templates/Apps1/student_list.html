@@ -1,0 +1,42 @@
+{%extends "Apps1/base.html" %}
+
+
+{% block content %}
+
+<table class="table table-borderless">
+    <thread class="border-bottom font-weight-bold">
+        <tr>
+            <td>Name</td>
+            <td>Student ID</td>
+            <td>Class</td>
+            <td>Gender</td>
+            <td>
+                <a href="{% url 'student_insert' %}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i> Add Data
+                </a>
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for student in student_list %}
+            <tr>
+                <td>{{student.fullname}}
+                <td>{{student.NIM}}
+                <td>{{student.Mobile}}
+                <td>{{student.position}}
+                <td>
+                    <a href="{% url 'student_update' student.id %}" class="btn text-secondary px=0">
+                        <i class="far fa-edit fa-lg"></i>
+                    </a>
+                    <form action="{% url 'student_delete' student.id %}" method="post" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn">
+                            <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                        </button>
+                    </form>
+                </td>
+            </tr>
+        {%endfor%}
+    </tbody>
+
+{% endblock content %}

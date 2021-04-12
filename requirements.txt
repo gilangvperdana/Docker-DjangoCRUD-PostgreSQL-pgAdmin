@@ -1,0 +1,9 @@
+Django>=3.0,<4.0
+psycopg2-binary>=2.8
+appdirs==1.4.3
+djangorestframework==3.6.2
+packaging==16.8
+pyparsing==2.2.0
+pytz==2017.2
+six==1.10.0
+django-crispy-forms==1.11.1

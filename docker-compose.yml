@@ -1,0 +1,32 @@
+version: "3.7"
+   
+services:
+  db:
+    image: postgres
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  pgadmin4:
+     image: dpage/pgadmin4
+     restart: always
+     environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+     ports:
+      - "85:80"
+     depends_on:
+     - db
+
+  web:
+    build: .
+    command: python ./manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/code
+    ports:
+      - "80:8000"
+    depends_on:
+      - db
+
+
